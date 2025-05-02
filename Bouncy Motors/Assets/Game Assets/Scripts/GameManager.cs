@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     public void AddMenu(IMenu menuName)
     {
         allMenus.Add(menuName);
+        Debug.Log("ADDED A MENU!");
         if(allMenus.Count >= noOfMenus)
         {
             Debug.Log("All menus have been added!");
