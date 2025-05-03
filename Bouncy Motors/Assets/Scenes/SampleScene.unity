@@ -367,6 +367,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNickname: {fileID: 563065614}
   playBtn: {fileID: 1693275059}
+  roomCreateBtn: {fileID: 1461629645}
+  findRoomBtn: {fileID: 2030626507}
+  quitBtn: {fileID: 604010531}
+  roomName: {fileID: 1346781904}
+  playersSlider: {fileID: 1770541754}
+  createRoomBtn: {fileID: 328127989}
 --- !u!1 &132059183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,7 +2654,7 @@ GameObject:
   - component: {fileID: 604010532}
   - component: {fileID: 604010531}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: QuitGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3161,7 +3167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 18.828201}
+  m_AnchoredPosition: {x: 0, y: 18.828247}
   m_SizeDelta: {x: 800, y: 37.6564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732254258
@@ -7199,7 +7205,7 @@ GameObject:
   - component: {fileID: 1461629646}
   - component: {fileID: 1461629645}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: CreateRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8910,7 +8916,7 @@ GameObject:
   - component: {fileID: 2030626508}
   - component: {fileID: 2030626507}
   m_Layer: 5
-  m_Name: Button
+  m_Name: FindRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
