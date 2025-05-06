@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         roomOptions.IsVisible = true;
         roomOptions.MaxPlayers = (int)playersSlider.value;
         roomOptions.EmptyRoomTtl = 30000;
-        GameManager.instance.OpenEMenu(MenuName.WaitingList);
+        PhotonNetworkManager.Instance.CreateRoom(roomName.text, roomOptions);
     }
 
     private void OnQuitRoomPressed()

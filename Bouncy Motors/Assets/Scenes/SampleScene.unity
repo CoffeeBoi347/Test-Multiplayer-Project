@@ -4448,7 +4448,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 5
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -6280,7 +6280,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1705797694}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6525,7 +6525,7 @@ GameObject:
   - component: {fileID: 1361524676}
   - component: {fileID: 1361524675}
   m_Layer: 5
-  m_Name: Content
+  m_Name: RoomList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8299,10 +8299,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2116777039}
   m_HandleRect: {fileID: 1520405369}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 1
+  m_MaxValue: 4
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9174,6 +9174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e4bec0d33128c4ea8383053dc96cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInfo: {fileID: -3555812258625802054, guid: 2425054cd81e8e24092633d3320a9e57, type: 3}
+  playerListParent: {fileID: 1091705841}
+  roomInfo: {fileID: 8776206660577922922, guid: f453e6d844b253b44b0793e69543799a, type: 3}
+  roomInfoObj: {fileID: 8795097471437309560, guid: f453e6d844b253b44b0793e69543799a, type: 3}
+  roomParentObj: {fileID: 1361524674}
 --- !u!4 &2044083246
 Transform:
   m_ObjectHideFlags: 0
