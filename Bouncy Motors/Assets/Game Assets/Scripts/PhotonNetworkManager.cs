@@ -2,6 +2,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 {
@@ -11,7 +13,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     public RoomInfoUI roomInfo;
     public Transform roomInfoObj;
     public Transform roomParentObj;
-    
+    public Button joinRoomButton;
     private void Awake()
     {
         if (Instance == null)
@@ -25,7 +27,6 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
         }
 
     }
-
     public void ConnectedToServer(string playerName)
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -61,6 +62,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
         base.OnCreatedRoom();
         Debug.Log("Room created!");
         PhotonNetwork.AutomaticallySyncScene = true;
+
     }
 
     public override void OnJoinedRoom()
@@ -71,6 +73,12 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 
         var playerInfo_ = Instantiate(playerInfo, playerListParent.transform);
         playerInfo_.playerName.text = PhotonNetwork.NickName;
+
+        joinRoomButton.interactable = PhotonNetwork.IsMasterClient;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            joinRoomButton.onClick.AddListener(JoinGame);
+        }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -84,6 +92,7 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
         base.OnMasterClientSwitched(newMasterClient);
+        joinRoomButton.interactable = PhotonNetwork.IsMasterClient;
         Debug.Log("Master client changed!");
     }
 
@@ -107,5 +116,19 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
     public void JoinRoom(string roomName)
     {
         PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void JoinGame()
+    {
+        photonView.RPC("EnableCountdown", RpcTarget.All);
+        if (PhotonNetwork.IsMasterClient) 
+        {
+            StartCoroutine(WaitForLoad(3f));
+        }
+    }
+    private IEnumerator WaitForLoad(float time)
+    {
+        yield return new WaitForSeconds(time);
+        PhotonNetwork.LoadLevel("Gameplay");
     }
 }

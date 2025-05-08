@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public Slider playersSlider;
     public Button createRoomBtn;
 
+
     private void Awake()
     {
         if (PlayerPrefs.HasKey("playerNickname"))
@@ -42,6 +43,7 @@ public class UIManager : MonoBehaviour
         findRoomBtn.onClick.AddListener(OnFindRoomButtonPressed);
         quitBtn.onClick.AddListener(OnQuitRoomPressed);
         createRoomBtn.onClick.AddListener(OnRoomCreatedButtonPressed);
+        
     }
 
     private void OnPlayButtonPressed()
