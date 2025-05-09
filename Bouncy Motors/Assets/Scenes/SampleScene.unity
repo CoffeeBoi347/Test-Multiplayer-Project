@@ -7202,7 +7202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1705797695}
   m_HandleRect: {fileID: 1705797694}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10495,13 +10495,14 @@ GameObject:
   - component: {fileID: 2096368638}
   - component: {fileID: 2096368637}
   - component: {fileID: 2096368640}
+  - component: {fileID: 2096368641}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2096368636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10661,6 +10662,19 @@ MonoBehaviour:
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2096368641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096368635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963be3ccc3d3b4b4aa6ddcf40d24d14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdownObj: {fileID: 2096368635}
 --- !u!1 &2116145372
 GameObject:
   m_ObjectHideFlags: 0

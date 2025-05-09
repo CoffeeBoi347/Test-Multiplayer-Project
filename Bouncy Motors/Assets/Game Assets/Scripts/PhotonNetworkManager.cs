@@ -1,9 +1,9 @@
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Collections;
+using Photon.Realtime;
 
 public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 {
@@ -81,15 +81,15 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        base.OnPlayerEnteredRoom(newPlayer);
         Debug.Log(newPlayer.NickName);
-        var playerInfo_ = Instantiate(playerInfo, playerListParent.transform);
-        playerInfo_.playerName.text = newPlayer.NickName;
+        var playerInfoGO = Instantiate(playerInfo, playerListParent.transform);
+        playerInfoGO.playerName.text = newPlayer.NickName;
     }
 
-    public override void OnMasterClientSwitched(Player newMasterClient)
+
+    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
     {
         base.OnMasterClientSwitched(newMasterClient);
         joinRoomButton.interactable = PhotonNetwork.IsMasterClient;
@@ -120,15 +120,9 @@ public class PhotonNetworkManager : MonoBehaviourPunCallbacks
 
     public void JoinGame()
     {
-        photonView.RPC("EnableCountdown", RpcTarget.All);
         if (PhotonNetwork.IsMasterClient) 
         {
-            StartCoroutine(WaitForLoad(3f));
+            PhotonNetwork.LoadLevel("Gameplay");
         }
-    }
-    private IEnumerator WaitForLoad(float time)
-    {
-        yield return new WaitForSeconds(time);
-        PhotonNetwork.LoadLevel("Gameplay");
     }
 }
