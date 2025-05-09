@@ -17,7 +17,7 @@ public class ChatMessage : MonoBehaviourPun
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             hasOpened = true;
             chatBox.SetActive(true);

@@ -15,7 +15,7 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
     void SpawnPlayer()
     {
         var posY = Random.Range(startPos.position.y, endPos.position.y);
-        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(-6.59f, posY, 1f), Quaternion.identity);
+        GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(-6.59f, posY, 1f), Quaternion.identity);
     }
 
 }

@@ -1,15 +1,18 @@
 using Photon.Pun;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviourPunCallbacks, IPunObservable
 {
     public string playerName;
+    public bool hasCollidedWithPoint = false;
     public Vector3 startPos;
     public Rigidbody2D rb;
     public float velocity;
     public float jumpPower;
     public ParticleSystem blastFX;
+    public ParticleSystem jumpFX;
     public Vector3 networkPos;
     public PlayerNameTest playerNameTst;
     private void Start()
@@ -18,11 +21,12 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
         rb = GetComponent<Rigidbody2D>();
         playerNameTst = GetComponent<PlayerNameTest>();
         playerNameTst.playerNameTxt.text = PhotonNetwork.NickName;
+       
     }
 
     private void Update()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
             InputControls();
         }
@@ -36,6 +40,7 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
     {
         if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
         {
+            jumpFX.Play();
             rb.velocity = new Vector2(velocity, jumpPower);
         }
     }
@@ -63,6 +68,21 @@ public class Player : MonoBehaviourPunCallbacks, IPunObservable
             StartCoroutine(GoBackToStart(0.1f));
             StartCoroutine(ChangeColor(0.1f));
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Point") && !hasCollidedWithPoint)
+        {
+            hasCollidedWithPoint = true;
+            StartCoroutine(SetCollidedWithPointToFalse(0.8f));
+        }
+    }
+
+    private IEnumerator SetCollidedWithPointToFalse(float time)
+    {
+        yield return new WaitForSeconds(time);
+        hasCollidedWithPoint = false;
     }
 
     private IEnumerator GoBackToStart(float time)
